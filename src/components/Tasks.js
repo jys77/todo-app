@@ -9,7 +9,6 @@ export const Tasks = () => {
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
 
-  console.log(selectedProject);
   let projectName = "";
 
   if (projects && selectedProject && !collatedTasksExist(selectedProject)) {
@@ -23,8 +22,8 @@ export const Tasks = () => {
   }
 
   useEffect(() => {
-    document.title = `${projectName}: Todoist`;
-  }, []);
+    document.title = `${projectName} - Todoist`;
+  }, [projectName]);
 
   console.log("tasks", tasks);
 
@@ -32,7 +31,7 @@ export const Tasks = () => {
     <div className="tasks" data-testid="tasks">
       <h2 data-testid="project-name">{projectName}</h2>
 
-      <ul className="task__list">
+      <ul className="tasks__list">
         {tasks.map((task) => (
           <li key={task.id}>
             <Checkbox id={task.id} />
