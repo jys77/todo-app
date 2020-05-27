@@ -15,16 +15,16 @@ export const useTasks = (selectedProject) => {
       .where("userId", "==", "W8PGJPzk3cMs");
 
     unsubscribe =
-      selectedProject && collatedTasksExist(selectedProject)
+      selectedProject && !collatedTasksExist(selectedProject)
         ? (unsubscribe = unsubscribe.where("projectId", "==", selectedProject))
         : selectedProject === "TODAY"
         ? (unsubscribe = unsubscribe.where(
             "date",
-            "===",
+            "==",
             moment().format("DD/MM/YYYY")
           ))
         : selectedProject === "INBOX" || selectedProject === 0
-        ? (unsubscribe = unsubscribe.where("date", "===", ""))
+        ? (unsubscribe = unsubscribe.where("date", "==", ""))
         : unsubscribe;
 
     unsubscribe = unsubscribe.onSnapshot((snapshot) => {
@@ -42,7 +42,6 @@ export const useTasks = (selectedProject) => {
             )
           : newTasks.filter((task) => task.archived !== true)
       );
-
       setArchivedTasks(newTasks.filter((task) => task.archived !== false));
     });
 
