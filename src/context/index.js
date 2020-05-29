@@ -10,6 +10,12 @@ import {
   useSelectedProjectValue,
 } from "./selected-project-provider";
 
+import {
+  SidebarToggleContext,
+  SidebarToggleProvider,
+  useSidebarToggle,
+} from "./sidebar-toggle-context";
+
 export {
   ProjectsContext,
   ProjectsProvider,
@@ -17,4 +23,7 @@ export {
   SelectedProjectContext,
   SelectedProjectProvider,
   useSelectedProjectValue,
+  SidebarToggleContext,
+  SidebarToggleProvider,
+  useSidebarToggle,
 };

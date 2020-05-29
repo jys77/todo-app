@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import { FaPizzaSlice } from "react-icons/fa";
 import { AddTask } from "../AddTask";
+import { useSidebarToggle } from "../../context";
 export const Header = ({ darkMode, setDarkMode }) => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
   const [showQuickAddTask, setShowQuickAddTask] = useState(false);
+  const { showSidebar, setShowSidebar } = useSidebarToggle();
   return (
     <header className="header" data-testid="header">
       <nav>
+        <div className="toggle" onClick={() => setShowSidebar(!showSidebar)}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
         <div className="logo">
           <img src="/images/logo.png" alt="Todoist" />
         </div>
