@@ -51,6 +51,10 @@ export const AddProject = ({ shouldShow = false }) => {
             data-testid="hide-project-overlay"
             className="add-project__cancel"
             onClick={() => setShow(false)}
+            onKeyDown={() => setShow(false)}
+            role="button"
+            tabIndex={0}
+            aria-label="Cancel adding project"
           >
             Cancel
           </span>
@@ -63,6 +67,10 @@ export const AddProject = ({ shouldShow = false }) => {
         onClick={() => {
           setShow(!show);
         }}
+        onKeyDown={() => setShow(!show)}
+        role="button"
+        tabIndex={0}
+        aria-label="Add project"
       >
         Add Project
       </span>
